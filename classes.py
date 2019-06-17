@@ -1,19 +1,26 @@
 # this is the start of the first file. Insert classes here:
 
-import os.path
+from os import path
 
+far_files = []
 FAR_file = open('far_files.txt', 'r')
-far_files = FAR_file.read()
+for line in FAR_file:
+    far_files.append(line.rstrip())
 FAR_file.close()
 
+inventoried_files = []
 inventoried_file = open('db_files.txt', 'r')
-inventoried_files = inventoried_file.read()
+for line in inventoried_file:
+    inventoried_files.append(line.rstrip())
 inventoried_file.close()
 
+print('far_files')
+for entry in far_files:
+    print(path.basename(entry))
+
+print('inventoried_files')
+for entry in inventoried_files:
+    print(path.basename(entry))
 
 
-print(far_files)
-print(inventoried_files)
-common_entries = set(far_files) & set(inventoried_files)
 
-print(common_entries)
